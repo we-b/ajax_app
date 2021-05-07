@@ -4,14 +4,13 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: "DESC")
   end
 
-  
- 
   def create
     post = Post.create(content: params[:content], checked: false)
     render json:{ post: post }
   end
 
   def checked
+    binding.pry
     post = Post.find(params[:id])
     if post.checked 
       post.update(checked: false)
