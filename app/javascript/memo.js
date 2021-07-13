@@ -1,3 +1,18 @@
+const buildHTML = (XHR) => {
+  const item = XHR.response.post;
+    //レスポンス変数postは変数itemsへ
+  const html = `
+    <div class="post">
+      <div class="post-date">
+        投稿日時：${item.created_at}
+      </div>
+      <div class="post-content">
+        ${item.content}
+      </div>
+    </div>`;
+  return html;
+};
+
 function post (){
   const submit = document.getElementById("submit");
     //送信のようそ取り出し
@@ -17,6 +32,22 @@ function post (){
       //jsonというデータフォーマット指定
     XHR.send(formData);
       //formDataを送る
+    XHR.onload = () => {
+      if (XHR.status != 200){
+        alert(`Error ${XHR.status}: ${XHR.statusText}`);
+          //ステータスコード に応じたメッセージ表示
+        return null;
+          //エラー出たらこれ以降処理しない
+      }
+      const list = document.getElementById("list");
+        //list要素取り出す
+      const formText = document.getElementById("content");
+        //content要素取り出す
+      list.insertAdjacentHTML("afterend", buildHTML(XHR));
+        //要素の直後に変数item情報入れる
+      formText.value = "";
+      
+    };
   });
 };
 

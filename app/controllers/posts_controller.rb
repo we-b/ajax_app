@@ -10,8 +10,8 @@ class PostsController < ApplicationController
 
   def create
     post = Post.create(content: params[:content])
-      #post変数に新投稿入れる
+      #post変数に新投稿入れる データベースへ
     render json:{ post: post }
-      #データをjson形式で返却 post変数はそのまま
+      #データをjson形式レスポンスとして返す post変数はそのまま
   end
 end
