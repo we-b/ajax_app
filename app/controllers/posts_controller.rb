@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     # # redirect_to action: :index  # 追記する
     post = Post.create(content: params[:content])
     # redirect_to action: :index
+    # render json:{ post: post }
     render json:{ post: post }
   end
 end
