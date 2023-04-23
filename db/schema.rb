@@ -18,4 +18,10 @@ ActiveRecord::Schema.define(version: 2020_11_30_073215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end
