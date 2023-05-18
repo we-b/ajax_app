@@ -9,7 +9,7 @@ const buildHTML = (XHR) => {
         ${item.content}
       </div>
     </div>`;
-  return html;//作成したhtmlを返す
+  return html;//作成したHTMLを返す
 };
 
 function post (){
@@ -29,9 +29,8 @@ function post (){
       };
       const list = document.getElementById("list");
       const formText = document.getElementById("content");
-      list.insertAdjacentHTML("afterend", buildhtml(XHR));
+      list.insertAdjacentHTML("afterend", buildHTML(XHR));
       formText.value = "";
-      //入力欄の初期化
     };
   });
 };
